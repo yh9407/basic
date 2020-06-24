@@ -1,0 +1,39 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+	<form method="post" action="sign_up">	
+		<input type = "text" name = "num">
+			<br>
+			<input type = "text" name = "name">
+			<br>
+			<input type = "email" name = "email">
+			<br>
+			<input type = "Number" name = "phone">
+			<br>
+
+		<input type="submit">
+	
+
+	</form>
+	
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script>
+	
+	$('input:submit').click(function() {
+		$.ajax({
+			url: '/sign_up',
+			type: 'post',
+			data: $('form').serialize(), //num=12&name=홍길동....
+			success: function(res) { 
+				alert(res.name);
+			}
+		});
+		return false; //기존 submit 버튼의 기능을 막기 위해서
+	});
+		</script>
+
+
+
+</body>
+</html>
