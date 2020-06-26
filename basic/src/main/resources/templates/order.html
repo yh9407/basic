@@ -1,0 +1,26 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td>배송지</td>
+			<td>주문수량</td>
+			<td>고객아이디</td>
+			<td>고객명</td>
+			<td>적립금</td>
+		</tr>
+		<tr th:each="order : ${list}">
+			<td th:text="${order.dest}"></td>
+		 	<td th:text="${order.count}"></td>
+			<td th:text="${order.customer.id}"></td>
+			<td th:text="${order.customer.name}"></td>
+			<td th:text="${order.customer.point}"></td> 
+			
+		</tr>
+
+
+	</table>
+</body>
+</html>

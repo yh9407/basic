@@ -23,6 +23,5 @@ public class Animal {
 	private String gender;
 	private String kind;
 	private String regdate;
-	private String updatedata;
 
 }

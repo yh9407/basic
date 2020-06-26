@@ -6,39 +6,60 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
+@RequestMapping("/home/")
 public class HomeController {
-	@GetMapping("/free") //free?title=???? <- È£Ãâ½Ã 
-	public String free (
-			Model model, String title) {
+
+	@GetMapping("/sign_in")
+	public String sign_in() {
+		return "sign_in";
+	}
+
+	@GetMapping("/sign_in2")
+	public String sign_in2(Model model, String id, String pw) {
+		if (id.equals("a") && pw.equals("1")) {
+			// ë¡œê·¸ì¸ ì„±ê³µ
+			model.addAttribute("msg", "success");
+		} else {
+			// ë¡œê·¸ì¸ ì‹¤íŒ¨
+			model.addAttribute("msg", "fail");
+		}
+		return "sign_in2";
+	}
+
+	@GetMapping("/test1")
+	public String test1() {
+		return "test1";
+	}
+
+	@GetMapping("/test2")
+	@ResponseBody
+	public String test2() {
+		return "ë‚´ìš©";
+	}
+
+	@GetMapping("/free") // /free?title=OOO
+	public String free(Model model, String title) {
 		model.addAttribute("title", title);
 		return "index";
-		//----Å¸ÀÓ¸®ÇÁ¹®¹ı------
-		//index.html ¿¡¼­ [[${title}]] Àû¾î¼­  µ¿ÀûÀ¸·Î º¯È¯½ÃÅ²°Í.
 	}
-	
-	//Log 4j [for Java] => slf4j
+
+	// Log4J -> Slf4J
 	Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
+
 	@RequestMapping("/")
 	public String home() {
 		System.out.println("print");
-		logger.trace("trace!");
-		logger.debug("debug!");
+		logger.trace("trace");
+		logger.debug("debug");
 		logger.info("info!");
 		logger.warn("warn!");
 		logger.error("error!");
-					
+		
+
 		return "home";
-		//¸®ÅÏ °ª¿¡ ÀûÇô ÀÖ´Â homeÀÌ¶ó´Â ÆÄÀÏÀ» Ã£¾Æ¼­ ¸®ÅÏÇÏ°Ô µÈ´Ù. 
-		//¿¹Á¦¿¡¼­´Â ÅÛÇÃ¸´¿¡ ÀÖ´Â homeÀÌ¶ó´Â HTML ÆÄÀÏÀ» ¸®ÅÏ.
-		
-		
-		
-		
-		
+
 	}
 }

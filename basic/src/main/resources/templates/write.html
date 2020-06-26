@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Title</title>
+</head>
+<body>
+<!-- <img src="http://localhost:8080/download">  -->
+	<form action="/write" method="post" enctype="multipart/form-data">
+		제목 : <input type="text" name="title"><br> 내용 :
+		<textarea name="content"></textarea>
+		<br> 작성자 : <input type="text" name="owner"><br> <input
+			type="file" name="file" multiple> <input type="submit"
+			value="업로드">
+	</form>
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script>
+		/*인풋의 서브밋 타입을 찾아 ajax를 대입  */
+		$('input:submit').click(function() {
+			// 폼 태그 가져오기
+			// 폼 데이터 라는 객체 이용
+			var form = $('form')[0]; //태크선택자로 form선택해서 0번째 선택
+			var formData = new FormData(form);
+
+			출처: https: //cofs.tistory.com/181 [CofS]
+			// 폼 데이터 ajax 데이터로 연결
+
+			$.ajax({
+				url : '/write',
+				type : 'post',
+				processData : false,
+				contentType : false,
+				data : formdata,
+				success : function(res) {
+					alert(res.msg);
+				}
+			});
+			return false; //기존 submit 버튼의 기능을 막기 위해서
+		});
+	</script>
+
+</body>
+</html>

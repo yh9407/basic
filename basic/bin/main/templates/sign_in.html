@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	<form method="post" action="sign_in">
+		<input type="number" name="num"><br>
+		<input type="text" name="name"><br>
+		<input type="submit">
+	</form>
+		<script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script>
+	
+	/*인풋의 서브밋 타입을 찾아 ajax를 대입  */
+		$('input:submit').click(function() {
+		$.ajax({
+			url: '/sign_in',
+			type: 'post',
+			data:{
+				num: $('[name=num]').val(),
+				name: $('[name=num]').val(),
+			},
+		//	data: $('form').serialize(), //위에랑 같은의미
+			success: function(res) { 
+				alert(res.msg);
+			}
+		});
+		return false; //기존 submit 버튼의 기능을 막기 위해서
+	});
+		</script>
+	
+	
+	
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

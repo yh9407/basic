@@ -1,0 +1,22 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<table border="1">
+		<tr>
+			<td>사원번호</td>
+			<td>사원명</td>
+			<td>부서명</td>
+		</tr>
+		<tr th:each="emp : ${list}">
+			<td th:text="${emp.empno}"></td>
+			<td th:text="${emp.ename}"></td>
+			<td th:text="${emp.dept.dname}"></td><!--dept 안에 dname까지  -->
+			
+		</tr>
+
+
+	</table>
+</body>
+</html>
